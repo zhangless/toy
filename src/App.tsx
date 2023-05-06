@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import EditPage from "./pages/EditPage";
+import ListPage from "./pages/ListPage";
+import RequireAuth from "./components/RequireAuth";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-         <i className="icon iconfont icon-graphical"></i>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<RequireAuth />}>
+          <Route index element={<EditPage />} />
+          <Route path="list" element={<ListPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+
