@@ -1,35 +1,26 @@
-import {Layout, Spin} from "antd";
-import Login from "../Login";
-import {Outlet} from "react-router-dom";
+import { Layout, Spin } from "antd";
+import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 import useGlobalStore from "src/store/globalStore";
-
-const {Header} = Layout;
+import useUserStore, { fetchUserInfo } from "src/store/userStore";
+import styles from "./index.module.less";
+import Login from "../Login";
 
 export default function RequireAuth() {
   const loading = useGlobalStore((state) => state.loading);
-
-  const headerStyle: React.CSSProperties = {
-    textAlign: "center",
-    color: "#fff",
-    height: 64,
-    paddingInline: 10,
-    lineHeight: "64px",
-    backgroundColor: "black",
-  };
-
+  const { isLogin } = useUserStore();
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
   return (
     <Layout>
       {loading && (
-        <div className="loading">
+        <div className={styles.loadingBox}>
           <Spin size="large" />
         </div>
       )}
-
-      <Header style={headerStyle}>
-        <Login />
-      </Header>
-
-      <Outlet />
+      <Login />
+      {isLogin && <Outlet />}
     </Layout>
   );
 }

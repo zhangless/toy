@@ -8,8 +8,8 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<RequireAuth />}>
-          <Route index element={<EditPage />} />
-          <Route path="list" element={<ListPage />} />
+          <Route index element={<ListPage />} />
+          <Route path="edit" element={<EditPage />} />
         </Route>
       </Routes>
     </Router>
