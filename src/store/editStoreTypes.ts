@@ -13,7 +13,6 @@ export interface ICmp {
   style: Style;
   value: string;
   onClick?: string;
-  // [key as string]: any
 }
 
 export interface ICmpWithKey extends ICmp {
@@ -22,7 +21,6 @@ export interface ICmpWithKey extends ICmp {
 
 export type EditStoreState = {
   canvas: ICanvas;
-  assembly: Set<number>;
 };
 
 export type AddCmpFC = (_cmp: ICmp) => void;
@@ -31,4 +29,4 @@ export type EditStoreAction = {
   addCmp: AddCmpFC;
 };
 
-export interface IEditStore extends EditStoreState, EditStoreAction { }
+export interface IEditStore extends EditStoreState, EditStoreAction {}

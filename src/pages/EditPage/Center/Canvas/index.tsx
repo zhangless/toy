@@ -1,8 +1,7 @@
 import useEditStore from "src/store/editStore";
 import styles from "./index.module.less";
-import { memo } from "react";
 
- function Canvas() {
+export default function Canvas() {
   const {canvas} = useEditStore();
   const {cmps} = canvas;
 
@@ -15,6 +14,3 @@ import { memo } from "react";
     </div>
   );
 }
-
-
-export default memo(Canvas)

@@ -39,7 +39,7 @@ const LeftSider = memo(() => {
             showSide === isTextComponent ? styles.selected : ""
           )}
           onClick={() => _setShowSide(isTextComponent)}>
-          {/* <i className={classNames("iconfont icon-wenben", styles.cmpIcon)} /> */}
+          <i className={classNames("iconfont icon-wenben", styles.cmpIcon)} />
           <span className={styles.cmpText}>文本</span>
         </li>
         <li
@@ -48,7 +48,7 @@ const LeftSider = memo(() => {
             showSide === isImgComponent ? styles.selected : ""
           )}
           onClick={() => _setShowSide(isImgComponent)}>
-          {/* <i className={classNames("iconfont icon-tupian", styles.cmpIcon)} /> */}
+          <i className={classNames("iconfont icon-tupian", styles.cmpIcon)} />
           <span className={styles.cmpText}>图片</span>
         </li>
         <li
@@ -57,9 +57,9 @@ const LeftSider = memo(() => {
             showSide === isGraphComponent ? styles.selected : ""
           )}
           onClick={() => _setShowSide(isGraphComponent)}>
-          {/* <i
+          <i
             className={classNames("iconfont icon-graphical", styles.cmpIcon)}
-          /> */}
+          />
           <span className={styles.cmpText}>图形</span>
         </li>
       </ul>
