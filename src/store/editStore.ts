@@ -1,5 +1,5 @@
-import {create} from "zustand";
-import {immer} from "zustand/middleware/immer";
+import { create } from "zustand";
+import { immer } from "zustand/middleware/immer";
 import {
   EditStoreState,
   EditStoreAction,
@@ -7,17 +7,16 @@ import {
   ICmp,
   Style,
 } from "./editStoreTypes";
-import {getOnlyKey} from "src/utils";
+import { getOnlyKey } from "src/utils";
 import Axios from "src/request/axios";
-import {getCanvasByIdEnd, saveCanvasEnd} from "src/request/end";
-import {resetZoom} from "./zoomStore";
+import { getCanvasByIdEnd, saveCanvasEnd } from "src/request/end";
+import { resetZoom } from "./zoomStore";
 
 const useEditStore = create(
   immer<EditStoreState & EditStoreAction>(() => ({
     canvas: getDefaultCanvas(),
     // 记录选中组件的下标
     assembly: new Set(),
-    addCmp
   }))
 );
 
@@ -32,7 +31,7 @@ export const clearCanvas = () => {
 
 export const addCmp = (_cmp: ICmp) => {
   useEditStore.setState((draft) => {
-    draft.canvas.cmps.push({..._cmp, key: getOnlyKey()});
+    draft.canvas.cmps.push({ ..._cmp, key: getOnlyKey() });
     draft.assembly = new Set([draft.canvas.cmps.length - 1]);
   });
 };
@@ -72,7 +71,7 @@ export const fetchCanvas = async (id: number) => {
 export const setAllCmpsSelected = () => {
   useEditStore.setState((draft) => {
     let len = draft.canvas.cmps.length;
-    draft.assembly = new Set(Array.from({length: len}, (a, b) => b));
+    draft.assembly = new Set(Array.from({ length: len }, (a, b) => b));
   });
 };
 
@@ -114,7 +113,7 @@ export const setCmpSelected = (index: number) => {
 export const updateAssemblyCmpsByDistance = (newStyle: Style) => {
   useEditStore.setState((draft) => {
     draft.assembly.forEach((index) => {
-      const cmp = {...draft.canvas.cmps[index]};
+      const cmp = { ...draft.canvas.cmps[index] };
 
       let invalid = false;
       for (const key in newStyle) {

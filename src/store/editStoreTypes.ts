@@ -1,6 +1,6 @@
 import React from "react";
 
-export type Style = any;
+export type Style = React.CSSProperties;
 
 export interface ICanvas {
   title: string;
@@ -13,6 +13,7 @@ export interface ICmp {
   style: Style;
   value: string;
   onClick?: string;
+  // [key as string]: any
 }
 
 export interface ICmpWithKey extends ICmp {
@@ -27,7 +28,7 @@ export type EditStoreState = {
 export type AddCmpFC = (_cmp: ICmp) => void;
 
 export type EditStoreAction = {
-  // addCmp: AddCmpFC;
+  addCmp: AddCmpFC;
 };
 
-export interface IEditStore extends EditStoreState, EditStoreAction {}
+export interface IEditStore extends EditStoreState, EditStoreAction { }
