@@ -17,6 +17,7 @@ const useEditStore = create(
     canvas: getDefaultCanvas(),
     // 记录选中组件的下标
     assembly: new Set(),
+    addCmp
   }))
 );
 
